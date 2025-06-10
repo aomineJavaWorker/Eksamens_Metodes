@@ -8,7 +8,7 @@ import javax.swing.JOptionPane;
 
 public class Tests {
 	
-	static class Atbilde {
+	static class Atbilde {// Atbildes klase satur tekstu un informāciju, vai tā ir pareiza
         String teksts;
         boolean irPareiza;
 
@@ -17,12 +17,12 @@ public class Tests {
             this.irPareiza = irPareiza;
         }
     }
-	static class Jautajums {
+	static class Jautajums {// Jautājuma klase satur jautājuma tekstu atbilžu sarakstu un pareizās atbildes indeksu
         String teksts;
         ArrayList<Atbilde> atbildes;	
         int pareizaAtbilde;
 
-        Jautajums(String teksts, String[] varianti, int pareizaisIndekss) {
+        Jautajums(String teksts, String[] varianti, int pareizaisIndekss) {//Konstruktors
             this.teksts = teksts;
             this.atbildes = new ArrayList<>();
             for (int i = 0; i < varianti.length; i++) {
@@ -32,7 +32,9 @@ public class Tests {
 	}
 
 	public static void main(String[] args) {
-		ArrayList<Jautajums> jautajumi = new ArrayList<Jautajums>();
+		
+		ArrayList<Jautajums> jautajumi = new ArrayList<Jautajums>();//Saraksts ar jautājumiem
+		
 		jautajumi.add(new Jautajums("Kas ir metode Java valodā?",new String[]{"Mainīgais", "Cipars", 
 				"Koda bloks, ko var izsaukt", "Datu tips"},2));
 		jautajumi.add(new Jautajums("Kā sauc nodotus datus metodei?",new String[] {"Metodei nevar nodot datus","Objekts",
@@ -54,32 +56,42 @@ public class Tests {
 		jautajumi.add(new Jautajums("Statisko metodi var izsaukt, neveidojot klases ...?",new String[] {"Konstruktoru","Mainīgo",
 				"objekta metodi, iekavās","instanci"},3));
 		
-		Collections.shuffle(jautajumi);
+		Collections.shuffle(jautajumi);// Sajauc jautājumu secību
 		int punkti = 0;
 		String izv;
 		int izvIndekss;
-		for (Jautajums j : jautajumi) {
-            Collections.shuffle(j.atbildes);
+		for (Jautajums j : jautajumi) { // for each cikls
+            Collections.shuffle(j.atbildes); // Sajauc atbilžu secību
 
-            String[] opcijas = new String[j.atbildes.size()];
+            String[] opcijas = new String[j.atbildes.size()]; // Izveido masīvu ar atbilžu tekstiem
             for (int i = 0; i < j.atbildes.size(); i++) {
-                opcijas[i] = j.atbildes.get(i).teksts;
+                opcijas[i] = j.atbildes.get(i).teksts; // aizpildam masīvu ar tekstu
             }
 
             izv = (String) JOptionPane.showInputDialog(null,
         			j.teksts, "Izvele", JOptionPane.QUESTION_MESSAGE,
-        			null, opcijas, opcijas[0]);
-        			izvIndekss = Arrays.asList(opcijas).indexOf(izv);
-            if (izvIndekss >= 0 && j.atbildes.get(izvIndekss).irPareiza) {
+        			null, opcijas, opcijas[0]);// Parāda jautājumu ar atbilžu variantiem
+        			izvIndekss = Arrays.asList(opcijas).indexOf(izv);// Atrod izvēlētās atbildes indeksu
+            if (izvIndekss >= 0 && j.atbildes.get(izvIndekss).irPareiza) {// Ja izvēlētā atbilde ir pareiza
                 punkti += 2;
                 JOptionPane.showMessageDialog(null, "Pareizi! +2 punkti");
             } else {
-                punkti -= 1;
+                punkti -= 1;//Ja nav(
                 JOptionPane.showMessageDialog(null, "Nepareizi. -1 punkts");
             }
         }
-		JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti.");
-
+		if(punkti<0) {
+			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti.Jūs neko nezinat((");
+		}else if(punkti>0 && punkti<10) {
+			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Vel ir jāpamācās");
+		}else if(punkti>10 && punkti<14) {
+			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Pietiekams rezultāts,bet ir jāceņšas labāk");
+		}else if(punkti>14 && punkti<20) {
+			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Labs rezultāts");
+		}else if(punkti==20) {
+			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Izcils rezultāts!");
+		}
+		
 	}
 
 }
