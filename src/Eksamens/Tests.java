@@ -1,9 +1,6 @@
 package Eksamens;
 
 import java.util.ArrayList;
-import java.util.Collections;
-
-import javax.swing.JOptionPane;
 
 public class Tests {
 	
@@ -26,8 +23,8 @@ public class Tests {
             this.atbildes = new ArrayList<>();
             for (int i = 0; i < varianti.length; i++) {
                 atbildes.add(new Atbilde(varianti[i], i == pareizaisIndekss));
+            }
         }
-    }
 	}
 
 	public static void main(String[] args) {
@@ -36,39 +33,30 @@ public class Tests {
 				"Koda bloks, ko var izsaukt", "Datu tips"},2));
 		jautajumi.add(new Jautajums("Kā sauc nodotus datus metodei?",new String[] {"Metodei nevar nodot datus","Objekts",
 				"Funkcijas","Parametri"},3));
-		Collections.shuffle(jautajumi);
+		jautajumi.add(new Jautajums("Kur ir jābut deklarētai metodei?",new String[] {"Klases ietveros","Ārpus visām klasēm",
+				"Mainīgā iekšienē","Faila nosaukumā"},0));
+		jautajumi.add(new Jautajums("Cik ir piekļuves modifikātori?",new String[] {"4","2",
+				"5","3"},0));
+		jautajumi.add(new Jautajums("Kurš piekļuves modifikātors ir pieejams no jebkuras vietas?",new String[] {"Private","Public",
+				"Default","Protected"},1));
+		jautajumi.add(new Jautajums("Kuram piekļuves modifikātoram nevar piekļūt no citas klases,bet tikai no deklarētās ?",new String[] {"Private","Public",
+				"Default","Protected"},0));
+		jautajumi.add(new Jautajums("Ja piekļuves modifikatoru nenorāda, tas tiek automātiski iestatīts uz...?",new String[] {"Private","Public",
+				"Default","Protected"},2));
+		jautajumi.add(new Jautajums("Kam pieder statiskā metode?",new String[] {"Klasei","klases objektam",
+				"Konstruktoram","Interfeisam"},0));
+		jautajumi.add(new Jautajums("Kur tiek norādīti parametri?",new String[] {"Pēc klases deklarācijas","Komentārā virs metodes",
+				"pēc metodes nosaukuma, iekavās","Faila beigās"},2));
+		jautajumi.add(new Jautajums("Statisko metodi var izsaukt, neveidojot klases ...?",new String[] {"Konstruktoru","Mainīgo",
+				"objekta metodi, iekavās","instanci"},3));
+		
+		
+		
+		
+		
+		
+		
 
-        int punkti = 0;
-
-        for (Jautajums j : jautajumi) {
-            Collections.shuffle(j.atbildes); // перемешиваем ответы
-
-            String[] opcijas = new String[j.atbildes.size()];
-            for (int i = 0; i < j.atbildes.size(); i++) {
-                opcijas[i] = j.atbildes.get(i).teksts;
-            }
-
-            int atbildeIndekss = JOptionPane.showOptionDialog(
-                null,
-                j.teksts,
-                "Izvēlies pareizo atbildi",
-                JOptionPane.DEFAULT_OPTION,
-                JOptionPane.QUESTION_MESSAGE,
-                null,
-                opcijas,
-                opcijas[0]
-            );
-
-            if (atbildeIndekss >= 0 && j.atbildes.get(atbildeIndekss).irPareiza) {
-                punkti += 2;
-                JOptionPane.showMessageDialog(null, "Pareizi! +2 punkti");
-            } else {
-                punkti -= 1;
-                JOptionPane.showMessageDialog(null, "Nepareizi. -1 punkts");
-            }
-        }
-
-        JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti.");
-
-		}
 	}
+
+}
