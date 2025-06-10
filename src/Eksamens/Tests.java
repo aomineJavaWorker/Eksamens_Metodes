@@ -1,6 +1,10 @@
 package Eksamens;
 
 import java.util.ArrayList;
+import java.util.Arrays;
+import java.util.Collections;
+
+import javax.swing.JOptionPane;
 
 public class Tests {
 	
@@ -50,12 +54,31 @@ public class Tests {
 		jautajumi.add(new Jautajums("Statisko metodi var izsaukt, neveidojot klases ...?",new String[] {"Konstruktoru","Mainīgo",
 				"objekta metodi, iekavās","instanci"},3));
 		
-		
-		
-		
-		
-		
-		
+		Collections.shuffle(jautajumi);
+		int punkti = 0;
+		String izv;
+		int izvIndekss;
+		for (Jautajums j : jautajumi) {
+            Collections.shuffle(j.atbildes);
+
+            String[] opcijas = new String[j.atbildes.size()];
+            for (int i = 0; i < j.atbildes.size(); i++) {
+                opcijas[i] = j.atbildes.get(i).teksts;
+            }
+
+            izv = (String) JOptionPane.showInputDialog(null,
+        			j.teksts, "Izvele", JOptionPane.QUESTION_MESSAGE,
+        			null, opcijas, opcijas[0]);
+        			izvIndekss = Arrays.asList(opcijas).indexOf(izv);
+            if (izvIndekss >= 0 && j.atbildes.get(izvIndekss).irPareiza) {
+                punkti += 2;
+                JOptionPane.showMessageDialog(null, "Pareizi! +2 punkti");
+            } else {
+                punkti -= 1;
+                JOptionPane.showMessageDialog(null, "Nepareizi. -1 punkts");
+            }
+        }
+		JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti.");
 
 	}
 
