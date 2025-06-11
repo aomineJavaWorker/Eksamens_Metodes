@@ -3,11 +3,9 @@ package Eksamens;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Collections;
-
 import javax.swing.JOptionPane;
 
 public class Tests {
-	
 	static class Atbilde {// Atbildes klase satur tekstu un informāciju, vai tā ir pareiza
         String teksts;
         boolean irPareiza;
@@ -58,19 +56,29 @@ public class Tests {
 		
 		Collections.shuffle(jautajumi);// Sajauc jautājumu secību
 		int punkti = 0;
-		String izv;
+		String izv,izvD;
 		int izvIndekss;
-		for (Jautajums j : jautajumi) { // for each cikls
-            Collections.shuffle(j.atbildes); // Sajauc atbilžu secību
+		int izvIndekssD;
+            String[] darbibas = {"Uzsākt testu","Iziet no programmas"};
+            izvD = (String) JOptionPane.showInputDialog(null,
+        			"Izvelies darbību", "Izvele", JOptionPane.QUESTION_MESSAGE,
+        			null, darbibas, darbibas[0]);
+        			izvIndekssD = Arrays.asList(darbibas).indexOf(izvD);
+        	switch(izvIndekssD) {
+        	case 0:
+        		for (Jautajums j : jautajumi) { // for each cikls
+                    Collections.shuffle(j.atbildes); // Sajauc atbilžu secību
 
-            String[] opcijas = new String[j.atbildes.size()]; // Izveido masīvu ar atbilžu tekstiem
-            for (int i = 0; i < j.atbildes.size(); i++) {
-                opcijas[i] = j.atbildes.get(i).teksts; // aizpildam masīvu ar tekstu
-            }
-
+                    String[] opcijas = new String[j.atbildes.size()]; // Izveido masīvu ar atbilžu tekstiem
+                    for (int i = 0; i < j.atbildes.size(); i++) {
+                        opcijas[i] = j.atbildes.get(i).teksts; // aizpildam masīvu ar tekstu
+                    }
             izv = (String) JOptionPane.showInputDialog(null,
         			j.teksts, "Izvele", JOptionPane.QUESTION_MESSAGE,
         			null, opcijas, opcijas[0]);// Parāda jautājumu ar atbilžu variantiem
+            if (izv == null) {
+                System.exit(0); //Ja izvēlās cancel vai krustiņu tad programma pārstaj darbību
+            }
         			izvIndekss = Arrays.asList(opcijas).indexOf(izv);// Atrod izvēlētās atbildes indeksu
             if (izvIndekss >= 0 && j.atbildes.get(izvIndekss).irPareiza) {// Ja izvēlētā atbilde ir pareiza
                 punkti += 2;
@@ -82,16 +90,20 @@ public class Tests {
         }
 		if(punkti<0) {
 			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti.Jūs neko nezinat((");
-		}else if(punkti>0 && punkti<10) {
-			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Vel ir jāpamācās");
-		}else if(punkti>10 && punkti<14) {
-			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Pietiekams rezultāts,bet ir jāceņšas labāk");
-		}else if(punkti>14 && punkti<20) {
-			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Labs rezultāts");
-		}else if(punkti==20) {
-			JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Izcils rezultāts!");
-		}
+			}else if(punkti>0 && punkti<=9) {
+				JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Vel ir jāpamācās");
+			}else if(punkti>=10 && punkti<=13) {
+				JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Pietiekams rezultāts,bet ir jāceņšas labāk");
+			}else if(punkti>=14 && punkti<20) {
+				JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Labs rezultāts");
+			}else if(punkti==20) {
+				JOptionPane.showMessageDialog(null, "Testa beigas. Jūsu rezultāts: " + punkti + " punkti. Izcils rezultāts!");
+			}		
+        	break;
+        	case 1:
+        		JOptionPane.showMessageDialog(null, "Programma ir pārtraukta");
+        	break;
+        	}
 		
 	}
-
 }
