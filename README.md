@@ -1,17 +1,17 @@
-# Mācību materials par "Programmas koda dalīšana apakšprogrammās jed darbs ar metodēm"
+# Mācību materials par "Programmas koda dalīšana apakšprogrammās jeb darbs ar metodēm"
 
 ## 🎯 Projekta mērķis
 📌 **Šis projekts ir izstrādāts, lai uzlabotu zināšanas par metodēm programmēšanā.**
 **Šeit jūs varēsiet apgūt jaunus tematus:**
--  Metodes izveidošana
--  Metodes ar parametriem
--  Metožu parslogošana
--  Rekursīvas metodes
+1. Metodes izveidošana  
+2. Metodes ar parametriem  
+3. Metožu pārslodze  
+4. Rekursīvas metodes
 
 📌 **Kā arī varēsiet apskatīt piemērus kur un kāpēc vajag izmantot metodes**
 
 ## 📚 Mācību materials
-🧭 **Mācību materiālā ir satura rādītājs kas palīdz oriontēties:**
+🧭 **Mācību materiālā ir satura rādītājs kas palīdz orientēties:**
 
 ![image](https://github.com/user-attachments/assets/2d0ddccd-b53a-4ccb-bdf9-c9d051cf73b0)
 
@@ -40,6 +40,8 @@
   
 ![image](https://github.com/user-attachments/assets/bd64cdf5-7151-4adc-9670-2473f98ceec1)
 
+📄 **Ja vēlaties nokopēt kodus no piemēriem, ielādējiet pievienoto .txt failu — tur viss ir sagatavots.**
+
 ## 📖 Resursi
 📌 **Materiāla beigās ir pievienoti izmantoto resursu avoti:**
 
@@ -58,10 +60,9 @@
 
 ![image](https://github.com/user-attachments/assets/ab532c29-e924-49b3-91b9-3cef35181c2f)
 
+![image](https://github.com/user-attachments/assets/eee7551d-53e1-43db-8644-a56583504bb1)
+
+
 ![image](https://github.com/user-attachments/assets/5ba505f9-0204-4364-a060-47b0404550b3)
 
-
-
-
-
-
+🎉 Ceram, ka šis materiāls palīdzēs jums kļūt par vēl prasmīgāku programmētāju! Neaizmirstiet atkārtot un pārbaudīt savas zināšanas testā)).
